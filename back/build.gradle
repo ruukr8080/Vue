@@ -1,0 +1,89 @@
+//buildscript {
+//	ext {
+//		queryDslVersion = "5.0.0"
+//	}
+//}
+
+plugins {
+	id 'java'
+	id 'org.springframework.boot' version '3.3.2'
+	id 'io.spring.dependency-management' version '1.1.6'
+	//	id "com.ewerk.gradle.plugins.querydsl" version "1.0.10" // ⭐ gralew로 빌드할 때 Querydsl 플러그인 사용 X 배포를 위해 gralew 써서 빌드하면 얘땜에 안됨. 위에 빌드스크립트 넣어서 해줘야댐
+
+
+}
+
+group = 'spring.study'
+version = '0.0.1-SNAPSHOT'
+
+
+java {
+	toolchain {
+		languageVersion = JavaLanguageVersion.of(17)
+	}
+}
+
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	//basic
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.springframework.boot:spring-boot-starter-web-services'
+	implementation 'org.springframework.boot:spring-boot-starter-logging'
+	developmentOnly 'org.springframework.boot:spring-boot-devtools'
+	//lombok
+	compileOnly 'org.projectlombok:lombok'
+	annotationProcessor 'org.projectlombok:lombok'
+	//Test
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+	//JPA
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	//db
+	runtimeOnly 'com.h2database:h2'
+	//Swagger
+	implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.1.0'
+
+	//querydsl
+//	implementation 'com.querydsl:querydsl-apt' // (apt)[Annotation Processor] 컴파일 시점에 QueryDSL이 생성하는 Q객체를 생성함.
+//	implementation 'com.querydsl:querydsl-jpa' // JPA Entuty를 쉽게 조회하고 조작하게 해줌 '어떻게?'는 따로 설명.
+	implementation 'com.querydsl:querydsl-jpa:5.0.0:jakarta' //⭐스프링 3.x 이상. {위에 두개 한꺼번에 해주는 애 같음.}
+
+	//apt로 Q객체를 생성하기 전에, JPA엔티티클래스를 스캔하고 Q객체 생성하게끔.
+	annotationProcessor "com.querydsl:querydsl-apt:${dependencyManagement.importedProperties['querydsl.version']}:jakarta"
+	annotationProcessor "jakarta.persistence:jakarta.persistence-api" //JPA엔티티 정의 할 떄 쓰는 @anotation들을 쓸 수 있게해줌
+	annotationProcessor "jakarta.annotation:jakarta.annotation-api"  //어노테이션으로 QueryDSL apt구현할 때 필요함.
+
+}
+tasks.named('test') {
+	useJUnitPlatform()
+}
+
+// === ⭐ QueryDsl 빌드 옵션 (선택) ===
+
+//apt가 생성한 QClass 저장할 패키지 설정
+def generated='src/main/generated'
+
+//Java sourceSet 에도 아래처럼 querydsl QClass 위치 추가해줘야됨.
+sourceSets {
+	main.java.srcDirs += [ generated ]
+}
+
+// querydsl QClass 파일 생성 위치 지정.
+tasks.withType(JavaCompile).configureEach {
+	options.getGeneratedSourceOutputDirectory().set(file(generated))
+}
+// gradle clean 하면 QClass 디렉토리 삭제. 이건 왜 하지
+clean {
+	delete file(generated)
+}
+
+

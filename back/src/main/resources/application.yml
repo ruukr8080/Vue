@@ -1,0 +1,62 @@
+server:
+  port: 8000
+
+
+spring:
+  jackson:
+    property-naming-strategy: SNAKE_CASE
+  mvc:
+    view:
+      prefix: /
+      suffix: .html
+    hiddenmethod:
+      filter:
+        enabled: true
+
+  devtools:
+    livereload:
+      enabled: true
+    restart:
+      enabled: true
+
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    show-sql: true
+    generate-ddl: true
+    defer-datasource-initialization: true
+
+  h2:
+    console:
+      path: /h2-console
+
+  datasource:
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:mem:test
+  sql:
+    init:
+      mode: always
+
+
+#springdoc:
+#  api-docs:
+#    path: /api-docs
+#  show-actuator: true
+#  default-consumes-media-type: application/json
+#  default-produces-media-type: application/json
+#  writer-with-default-pretty-printer: true
+#  model-and-view-allowed: true
+#  paths-to-match:
+#
+#  swagger-ui:
+#    path: /swagger-ui.html
+#    configUrl: /v3/api-docs/swagger-config
+#    layout: BaseLayout
+#    groups-order: DESC
+#    tags-sorter: alpha
+#    operations-sorter: alpha
+#    disable-swagger-default-url: true
+#    display-request-duration: true
+#    defaultModelsExpandDepth: 2
+#    defaultModelExpandDepth: 2
+
