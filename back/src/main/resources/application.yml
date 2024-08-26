@@ -19,23 +19,35 @@ spring:
     restart:
       enabled: true
 
+
   jpa:
     hibernate:
-      ddl-auto: create-drop
+      ddl-auto: create
     show-sql: true
     generate-ddl: true
     defer-datasource-initialization: true
-
-  h2:
-    console:
-      path: /h2-console
-
+    database: postgresql
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    open-in-view: false
   datasource:
-    driver-class-name: org.h2.Driver
-    url: jdbc:h2:mem:test
-  sql:
-    init:
-      mode: always
+    driver-class-name: org.postgresql.Driver
+    url:  jdbc:postgresql://0.0.0.0:5432/postgres
+    username: "tester"
+    password: "sa"
+
+
+#  jpa:
+#    hibernate:
+#      ddl-auto: create-drop
+#    show-sql: true
+#    generate-ddl: true
+#    defer-datasource-initialization: true
+#  datasource:
+#    driver-class-name: org.h2.Driver
+#    url: jdbc:h2:mem:test
+#  sql:
+#    init:
+#      mode: always
 
 
 #springdoc:
