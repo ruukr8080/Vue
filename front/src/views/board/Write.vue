@@ -64,7 +64,7 @@ export default {
       })
     },
     fnSave() {
-      let apiUrl = this.$serverUrl + '/board'
+      let apiUrl = this.$serverUrl + '/board/'
       this.form = {
         "idx": this.idx,
         "title": this.title,

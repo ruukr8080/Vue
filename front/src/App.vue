@@ -1,19 +1,21 @@
+
 <template>
-  <PageHeader/> <!-- header -->
+  <Header/> <!-- header -->
   <router-view/>
-  <PageFooter/> <!-- footer -->
+  <Footer/> <!-- footer -->
 </template>
 
 
 <script>
-import PageHeader from '@/components/PageHeader'
-import PageFooter from '@/components/PageFooter'
+import Header from "@/components/Header.vue";
+import Footer from "@/components/Footer.vue";
 
 export default {
   name: 'App',
   components:{
-    PageHeader,
-    PageFooter
+
+    Header,
+    Footer
   }
 }
 </script>

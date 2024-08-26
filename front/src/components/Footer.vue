@@ -1,4 +1,3 @@
-<!-- PageFooter -->
 <template>
   <hr/>
   <footer>

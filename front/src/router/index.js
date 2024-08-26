@@ -1,13 +1,19 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import PageHome from '@/views/PageHome.vue'
-import BoardList from '@/views/board/BoardList.vue'
-import BoardDetail from '@/views/board/BoardDetail.vue'
-import BoardWrite from '@/views/board/BoardWrite.vue'
+import Home from '@/views/Home'
+import List from '@/views/board/List'
+import Detail from '@/views/board/Detail'
+import Write from "@/views/board/Write"
+import Login from "@/views/common/Login";
 const routes = [
     {
         path: '/',
-        name: 'PageHome',
-        component: PageHome
+        name: 'Home',
+        component: Home
+    },
+    {
+        path: '/login',
+        name: 'Login',
+        component: Login  //로그인 컴포넌트 추가
     },
     {
         path: '/about',
@@ -15,22 +21,22 @@ const routes = [
         // route level code-splitting
         // this generates a separate chunk (about.[hash].js) for this route
         // which is lazy-loaded when the route is visited.
-        component: () => import(/* webpackChunkName: "about" */ '../views/PageAbout.vue')
+        component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
     },
     {
         path: '/board/list',
         name: 'BoardList',
-        component: BoardList
+        component: List
     },
     {
         path: '/board/detail',
         name: 'BoardDetail',
-        component: BoardDetail
+        component: Detail
     },
     {
         path: '/board/write',
         name: 'BoardWrite',
-        component: BoardWrite
+        component: Write
     },
 ]
 const router = createRouter({
