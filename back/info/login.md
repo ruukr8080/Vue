@@ -156,7 +156,7 @@ Go to package.json
 and in the eslintConfig 
 object add the following rule: "vue/multi-word-component-names": "off"
 or even better: "vue/multi-word-component-names": 0
-![DOqwa.gif](DOqwa.gif)
+![DOqwa.gif](images/DOqwa.gif)
 
 컴포넌트 네이밍갖고 지랄하는건 해결함.
 근데 거의 모든 파일이 imnport,export parsing이 안됨.

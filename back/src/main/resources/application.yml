@@ -19,16 +19,22 @@ spring:
     restart:
       enabled: true
 
+#  flyway:
+#    enabled: true
+#    baseline-on-migrate: true
 
   jpa:
     hibernate:
-      ddl-auto: create
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+      ddl-auto: update
     show-sql: true
     generate-ddl: true
     defer-datasource-initialization: true
     database: postgresql
     database-platform: org.hibernate.dialect.PostgreSQLDialect
     open-in-view: false
+
   datasource:
     driver-class-name: org.postgresql.Driver
     url:  jdbc:postgresql://0.0.0.0:5432/postgres

@@ -20,7 +20,7 @@ Store라는 파일을 통해 데이터를 관리하고 프로젝트 전체에 �
 
 ### 🔥Vuex 구조
 
-![img_8.png](img_8.png)
+![img_8.png](images/img_8.png)
 vuex는 state, mutations, actions, getter 4가지 형태로 관리가 된다.
 
 #### 🎈State

@@ -39,6 +39,20 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web-services'
 	implementation 'org.springframework.boot:spring-boot-starter-logging'
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
+	implementation 'org.springframework.boot:spring-boot-starter-security'
+
+//	developmentOnly 'org.springframework.boot:spring-boot-docker-compose'
+//	testAndDevelopmentOnly 'org.springframework.boot:spring-boot-docker-compose'
+
+	//security
+
+//	implementation 'org.springframework.boot:spring-boot-starter-validation'
+//	implementation 'org.springframework.boot:spring-boot-starter-oauth2-client'
+//	implementation 'org.springframework.boot:spring-boot-starter-oauth2-resource-server'
+//
+//	implementation 'jakarta.validation:jakarta.validation-api:3.1.0'
+	implementation 'com.auth0:java-jwt:4.4.0'
+
 	//lombok
 	compileOnly 'org.projectlombok:lombok'
 	annotationProcessor 'org.projectlombok:lombok'
@@ -47,11 +61,13 @@ dependencies {
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 	//JPA
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-	//db
+	//db,flyway
 	runtimeOnly 'com.h2database:h2'
-	// https://mvnrepository.com/artifact/org.postgresql/postgresql
-	implementation group: 'org.postgresql', name: 'postgresql', version: '42.7.4'
-	runtimeOnly 'org.postgresql:postgresql'
+//	implementation 'org.flywaydb:flyway-core'
+
+
+	implementation 'org.postgresql:postgresql:42.7.3'
+//	runtimeOnly 'org.postgresql:postgresql'
 	//Swagger
 	implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.1.0'
 
@@ -66,12 +82,17 @@ dependencies {
 	annotationProcessor "jakarta.annotation:jakarta.annotation-api"  //어노테이션으로 QueryDSL apt구현할 때 필요함.
 
 }
+//
+//application {
+//	mainClass.set('spring.study.back.BackApplication')
+//}
+
 tasks.named('test') {
 	useJUnitPlatform()
 }
-tasks.named('bootBuildImage') {
-	builder = 'paketobuildpacks/builder-jammy-base:latest'
-}
+//tasks.named('bootBuildImage') {
+//	builder = 'paketobuildpacks/builder-jammy-base:latest'
+//}
 
 
 // === ⭐ QueryDsl 빌드 옵션 (선택) ===

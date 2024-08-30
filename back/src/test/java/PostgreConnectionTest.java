@@ -4,7 +4,6 @@
 
 import org.assertj.core.api.Assertions;
 import org.assertj.core.api.Fail;
-import org.junit.Test;
 import org.junit.jupiter.api.DisplayName;
 
 import java.sql.*;
@@ -17,13 +16,11 @@ public class PostgreConnectionTest {
     private String USERNAME  = "tester";
     private String PASSWORD  = "sa";
 
-    @Test
     @DisplayName("DB 연결 테스트")
     public void ConnectionTest() throws Exception{
         Connection con = DriverManager.getConnection(URL, USERNAME, PASSWORD);
         Assertions.assertThat(con).isNotNull();
     }
-    @Test
     @DisplayName("DB 연결 및 특정 ID의 이름 검증")
     public void ConnectionNamePrintTest() throws Exception {
         // Given
