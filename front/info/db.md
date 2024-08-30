@@ -2,8 +2,10 @@
 
 로그인 이후 데이터 관리 등을 위해 제대로 된 db로 써보자.
 
-디비는 postgre 쓸거고 도커로 띄울거임
+디비는 postgreSQL 쓸거고 도커로 띄울거임
 
+그리고 FlyWqy로 db 마이그레이션 할거임.
+flyway도 도커컨테이너로 띄울거.
 
 # 도커로 DB 세팅
 
@@ -110,7 +112,7 @@ docker volume create pgdb;
 ```
 # DI,JDBC 수정 ㄱㄱ
 
-**DI** 
+**DI**
 
 gradle.build
 
@@ -144,8 +146,8 @@ application.yml
 
 - jdbc 데이터 소스 바꿔줌.
 - sql 플랫폼 바꾸고 접속계정 설정해줌.
-- JPA 수정. 이것저것 해주고 
-  - ddl-auto : create-drop 이었는데 update로 바꿈.
+- JPA 수정. 이것저것 해주고
+    - ddl-auto : create-drop 이었는데 update로 바꿈.
 
 이제 컴파일 돌려서 확인해보자
 .
@@ -162,7 +164,7 @@ application.yml
 일단 내 도커가 우분투에서 돌아가고있는걸로 미뤄보아
 그냥 하던대로는 안될거같음.
 
-일단 세팅 전에 호스트 포트 확인. 
+일단 세팅 전에 호스트 포트 확인.
 ```shell
 netstat -ano | findstr 5432
 ```
