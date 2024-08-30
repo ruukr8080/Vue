@@ -19,13 +19,13 @@ public class QUserEntity extends EntityPathBase<UserEntity> {
 
     public static final QUserEntity userEntity = new QUserEntity("userEntity");
 
-    public final StringPath id = createString("id");
-
     public final NumberPath<Long> idx = createNumber("idx", Long.class);
 
     public final StringPath name = createString("name");
 
     public final StringPath pw = createString("pw");
+
+    public final StringPath userId = createString("userId");
 
     public QUserEntity(String variable) {
         super(UserEntity.class, forVariable(variable));

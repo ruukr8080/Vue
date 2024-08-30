@@ -12,9 +12,9 @@
 # Vuex setting
 
 
-1. vuex 설치
+1. vuex 설치 
 
-   
+
      npm install vuex
 
 

@@ -36,9 +36,9 @@ public class BoardController {
     @GetMapping("/{id}")
     @Tag(name = "게시글 조회 GetMapping('{id}')", description = "특정 글 조회: 특정 id 값으로 파라미터 넘겨서 조회,조작")
     public BoardDto getBoard(@PathVariable(name = "id") Long id) {
-        log.info("(어차피 프론트에서 id로 캡처떠서 id만 요청보내면 됨)요청 받은 id=={}", id);
+        log.info("요청 받은 id=={}", id);
         BoardDto result = boardService.getBoard(id);
-        log.info("맞음??{}", result);
+        log.info("결과 확인??{}", result);
         return boardService.getBoard(id);
     }
 
