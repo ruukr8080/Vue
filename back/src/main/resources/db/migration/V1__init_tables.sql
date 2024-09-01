@@ -8,14 +8,14 @@ CREATE TABLE IF NOT EXISTS tb_board (
 
 CREATE TABLE IF NOT EXISTS tb_user (
                          IDX BIGSERIAL PRIMARY KEY,
-                         ID VARCHAR(50) UNIQUE,
+                         USERID VARCHAR(50) UNIQUE,
                          PW VARCHAR(100),
                          NAME VARCHAR(50)
 );
 
 COMMENT ON table tb_board is '게시판 테이블';
 COMMENT ON TABLE tb_user IS '유저 테이블';
-
+-- drop table tb_user
 INSERT INTO public.tb_board (TITLE, CONTENTS, AUTHOR, CREATED_AT)
 SELECT
     'Title ' || SEQ.nextval,

@@ -3,8 +3,6 @@ package spring.study.back;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -35,11 +33,11 @@ class UserRepositoryTest {
     @Test
     @DisplayName("1.유저 데이터 생성")
     void test_1() {
-        String encPw = pwEncoder.encode("test_password");
+        String encPw = pwEncoder.encode("t");
         UserEntity userEntity = UserEntity.builder()
-                .userId("test")
+                .userId("t")
                 .pw(encPw)
-                .name("test")
+                .name("t")
                 .build();
         UserEntity savedUserEntity = userRepository.save(userEntity);
         assertThat(userEntity.getUserId()).isEqualTo(savedUserEntity.getUserId());
@@ -49,8 +47,8 @@ class UserRepositoryTest {
     @DisplayName("2.유저정보 검색해서 비번 비교. 필터가 일 잘하는지 보는거.")
     void test_2() {
 
-        String userId = "test";
-        String pw = "test_password";
+        String userId = "t";
+        String pw = "t";
         UserDetails user = userService.loadUserByUsername(userId);
 
         UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(user, pw);

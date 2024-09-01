@@ -17,20 +17,24 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import spring.study.back.config.util.TokenRequestFilter;
+import spring.study.back.service.UserService;
 
 
 @RequiredArgsConstructor
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfig {
+    private final UserService userService;
+    private final TokenRequestFilter tokenRequestFilter;
 
     @Bean //권한
-    public AuthenticationManager authenticationManager(AuthenticationConfiguration authenticationConfiguration) throws Exception{
+    public AuthenticationManager authenticationManager(AuthenticationConfiguration authenticationConfiguration) throws Exception {
         return authenticationConfiguration.getAuthenticationManager();
     }
 
     @Bean //비번
-    public BCryptPasswordEncoder encodePWD(){
+    public BCryptPasswordEncoder encodePWD() {
         return new BCryptPasswordEncoder();
     }
 
@@ -44,17 +48,13 @@ public class WebSecurityConfig {
         http.csrf(CsrfConfigurer::disable); // 토큰을 활용하는 경우 모든 요청에 대해 접근이 가능하도록 함
         http.authorizeHttpRequests(authorize -> authorize
 
-                .anyRequest().authenticated()
-        )
-                .sessionManagement(session ->session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+                        .anyRequest().authenticated()
+                )
+                .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 // 토큰을 활용하면 세션이 필요 없으므로 STATELESS로 설정하여 Session을 사용하지 않는다.
                 .formLogin(FormLoginConfigurer::disable);// form 기반의 로그인에 대해 비활성화 한다.
-        // JWT 인증 필터 추가
-//        http.addFilterBefore(tokenRequestFilter, UsernamePasswordAuthenticationFilter.class);
 
-//        return http.cors();
-
-
+        http.addFilterBefore(tokenRequestFilter, UsernamePasswordAuthenticationFilter.class);
         return http.build();
     }
 }

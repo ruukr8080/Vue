@@ -1,6 +1,8 @@
 server:
   port: 8000
 
+jwt:
+  secret: AAAABBBBCCCCDDDDEEEEFFFFGGGG123!@#
 
 spring:
   jackson:
