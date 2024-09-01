@@ -1,15 +1,18 @@
+/* service/loginAPI.js */
+import axios from 'axios'
+
 const getUserInfo = (userId, userPw) => {
     const reqData = {
         'user_id': userId,
         'user_pw': userPw,
     }
-    return {
-        'data': {
-            'user_id': reqData.userId,
-            'user_token': 'user_test_token',
-            'user_role': 'ADM'
+    let serverUrl = '//localhost:8000'
+
+    return axios.post(serverUrl + '/user/login', reqData,{
+        header:{
+            'Content-Type' : 'application/json'
         }
-    }
+    })
 }
 export default {
     async doLogin(userId, userPw) {
@@ -24,7 +27,7 @@ export default {
                 return userInfoResponse;
             }
         } catch (err) {
-            console.log(err)
+            console.error(err)
         }
     }
 }
