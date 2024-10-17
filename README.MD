@@ -1,6 +1,7 @@
-# Spring 3 + Vue 3 study
+# Spring 3 + Vue 3
+
 ---
-[블로그](https://ruukr8080.github.io)
+
 
 ## 수행 목록
 ---
