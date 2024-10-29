@@ -30,6 +30,7 @@
 >8. 게시판 QueryDSL로 검색 API 구현 ✅
 ---
 ### Docs
-- [FE와 BE 분리 구조의 이해와 실습]()
-- [Implementation]()
-- [Vuex]()
+- [docs](https://github.com/ruukr8080/my-docs/tree/main/%EA%B3%B5%EB%B6%80%EA%B8%B0%EB%A1%9D/Vue)
+- [FE와 BE 분리 구조의 이해와 실습](https://github.com/ruukr8080/my-docs/blob/main/%EA%B3%B5%EB%B6%80%EA%B8%B0%EB%A1%9D/Vue/FE%EC%99%80%20BE%20%EB%B6%84%EB%A6%AC%20%EA%B5%AC%EC%A1%B0%EC%9D%98%20%EC%9D%B4%ED%95%B4.md)
+- [Implementation](https://github.com/ruukr8080/my-docs/blob/main/%EA%B3%B5%EB%B6%80%EA%B8%B0%EB%A1%9D/Vue/Implementation.md)
+- [Vuex](https://github.com/ruukr8080/my-docs/blob/main/%EA%B3%B5%EB%B6%80%EA%B8%B0%EB%A1%9D/Vue/Vuex.md)
