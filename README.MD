@@ -3,9 +3,8 @@
 **Goal**
 > 백엔드와 프론트엔드를 각각 다른 프레임워크로 개발하는게 
 왜 웹 개발 국룰인지 직접 코딩하며 알아보자.
-> `+ Vue 프레임워크 찍먹해보기`
 
-- [go to repository](https://github.com/ruukr8080/Board)
+> `+ Vue 프레임워크 찍먹해보기`
 
 ---
 **Front**
